@@ -5,6 +5,10 @@ class Node {
     Node next;
     Node previous;
 
+    Node(String data){
+        this.data = data;
+    }
+
     public String getData() {
         return data;
     }
