@@ -1,9 +1,7 @@
 package uaslp.objects.list.arraylist;
 
-import uaslp.objects.list.linkedlist.LinkedListIterator;
-
-public class ArrayList {
-    /*private static final int DEFAULT_SIZE = 50;
+public class ArrayList{
+    private static final int DEFAULT_SIZE = 50;
     private String[] array;
     private int size;
 
@@ -25,24 +23,34 @@ public class ArrayList {
     }
 
     public void addAtFront(String data){
-        if(size >= 0){
-            System.arraycopy();
+        if(size == array.length){
+            increaseArraySize();
+        }
+
+        if (size >= 0){
+            System.arraycopy(array, 0, array, 1, size);
         }
         array[0] = data;
+        size++;
     }
 
     public void remove(int index){
-        for(int i = index; i < size - 1; i++){
-            array[i] = array[i+1];
+        if(index < 0 || index >= size){
+            return;
         }
-        array[size-1] = null;
+
+        if (size - 1 - index >= 0){
+            System.arraycopy(array, index + 1, array, index, size - 1 - index);
+        }
+        array[size - 1] = null;
         size--;
     }
 
     public void removeAll(int index){
-        for(int i = index; i < size - 1; i++) {
-            array[i] = array[i + 1];
+        for(int i = index; i < size - 1; i++){
+            array[i] = null;
         }
+        size = 0;
     }
 
     public void setAt(int index, String data){
@@ -51,36 +59,25 @@ public class ArrayList {
         }
     }
 
-    public void getAt(String index){
-        return index >= 0 && index < size ? array[index];
+    public String getAt(int index){
+        return index >= 0 && index < size ? array[index] : null;
     }
 
-    public void removeAllWithValue(String data){
-        return null;
+    public ArrayListIterator getIterator(){
+        return new ArrayListIterator(this);
     }
 
-    public void getSize(){
-        return null;
-    }
-
-    public void getIterator(ArrayListIterator){
-        return null;
-    }
-
-    public void String[] getArray() {
-        return array;
-    }
-
-    public int getSize() {
+    public int getSize(){
         return size;
     }
 
     private void increaseArraySize(){
         String []newArray = new String[array.length * 2];
+
         for(int i = 0; i < size; i++){
             newArray[i] = array[i];
         }
 
         array = newArray;
-    }*/
+    }
 }
