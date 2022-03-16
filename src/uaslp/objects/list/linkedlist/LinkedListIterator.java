@@ -2,21 +2,20 @@ package uaslp.objects.list.linkedlist;
 
 import uaslp.objects.list.Iterator;
 
-public class LinkedListIterator implements Iterator {
-    private Node currentNode;
+public class LinkedListIterator<T> implements Iterator<T> {
+    private Node<T> currentNode;
 
-    LinkedListIterator(Node startNode){
+    LinkedListIterator(Node<T> startNode){
         currentNode = startNode;
     }
 
-    @Override
     public boolean hasNext(){
         return currentNode != null;
     }
 
-    @Override
-    public String next(){
-        String data = currentNode.data;
+
+    public T next(){
+        T data = currentNode.data;
 
         currentNode = currentNode.next;
 
