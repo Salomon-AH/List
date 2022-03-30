@@ -1,3 +1,5 @@
+import uaslp.objects.list.Exception.NotNullValuesAllowedException;
+import uaslp.objects.list.Exception.NotValidIndexException;
 import uaslp.objects.list.Iterator;
 import uaslp.objects.list.List;
 import uaslp.objects.list.arraylist.ArrayList;
@@ -5,21 +7,38 @@ import uaslp.objects.list.linkedlist.LinkedList;
 
 public class Main {
     public static void main(String[] args) {
+        /*
         System.out.println("ArrayList");
         metodo(new ArrayList<>(), new ArrayList<>(), new ArrayList<>());
 
         System.out.println("***************");
 
         System.out.println("LinkedList");
-        metodo(new LinkedList<>(), new LinkedList<>(), new LinkedList<>());
+        metodo(new LinkedList<>(), new LinkedList<>(), new LinkedList<>());*/
+
+        List<String> team1 = new LinkedList<>();
+        List<String> team2 = new LinkedList<>();
+        List<String> team3 = new LinkedList<>();
+
+        try{
+            metodo(team1, team2, team3);
+        }catch (NotValidIndexException ex) {
+            System.out.println(ex.getMessage());
+        } catch (NotNullValuesAllowedException e){
+            System.out.println(e.getMessage());
+        }
+
+        System.out.println("El programa no ha fallado");
     }
 
-    public static void metodo(List<String> team1, List<String> team2, List<String> team3) {
+    public static void metodo(List<String> team1, List<String> team2, List<String> team3) throws NotValidIndexException, NotNullValuesAllowedException {
 
         /*List<String> team1 = new ArrayList<>();
         List<String> team2 = new ArrayList<>();
         List<String> team3 = new ArrayList<>();
         */
+        //team1.remove(5);
+        team1.addAtTail(null);
 
         team1.addAtTail("Jesus");
         team1.addAtTail("Salomon");
