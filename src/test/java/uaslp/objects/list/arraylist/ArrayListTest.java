@@ -3,6 +3,7 @@ package uaslp.objects.list.arraylist;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import uaslp.objects.list.Exception.NotNullValuesAllowedException;
+import uaslp.objects.list.Exception.NotSuchElementException;
 import uaslp.objects.list.Exception.NotValidIndexException;
 import uaslp.objects.list.Iterator;
 
@@ -227,7 +228,7 @@ public class ArrayListTest {
     }
 
     @Test
-    public void givenAListWithThreeElements_whenGetIterator_thenWorksOverThreeElements() throws NotNullValuesAllowedException{
+    public void givenAListWithThreeElements_whenGetIterator_thenWorksOverThreeElements() throws NotNullValuesAllowedException, NotSuchElementException, NotValidIndexException{
         //Given:
         ArrayList<String> list = new ArrayList<>();
         list.addAtFront("Hello");
